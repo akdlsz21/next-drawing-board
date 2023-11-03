@@ -26,5 +26,6 @@ jobs:
            uses: actions/github-script@v6
            with:
               script: |
+                 const assignToProject = require('./.github/scripts/assign-to-project.js');
                  await assignToProject({ github, context, columnId: 1 });
               github-token: ${{ secrets.GITHUB_TOKEN }}
