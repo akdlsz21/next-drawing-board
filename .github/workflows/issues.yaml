@@ -1,0 +1,26 @@
+name: Issue Milestone Assigner
+
+on:
+   issues:
+      types: [opened, edited]
+
+jobs:
+   assign-milestone:
+      runs-on: ubuntu-latest
+      steps:
+         - name: GitHub Script
+           uses: actions/github-script@v6.4.1
+
+           with:
+              github-token: ${{secrets.GITHUB_TOKEN}}
+              script: |
+                 const issue_number = context.issue.number;
+                 const milestone_number = 1; // Replace with your milestone number
+                 console.log(context);
+                 console.log(github.rest.issues);
+                 github.rest.issues.update({
+                   owner: context.repo.owner,
+                   repo: context.repo.repo,
+                   issue_number: issue_number,
+                   milestone: milestone_number
+                 });
