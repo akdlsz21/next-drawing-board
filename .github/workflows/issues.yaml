@@ -19,9 +19,12 @@ jobs:
            with:
               script: |
                  const assignMilestone = require('./.github/scripts/assign-milestone.js');
-                 const assignToProject = require('./.github/scripts/assign-to-project.js');
-
                  await assignMilestone({ github, context });
-                 await assignToProject({ github, context, columnId: "1" });
+              github-token: ${{ secrets.GITHUB_TOKEN }}
 
+         - name: Assign Issue to Project
+           uses: actions/github-script@v6
+           with:
+              script: |
+                 await assignToProject({ github, context, columnId: 1 });
               github-token: ${{ secrets.GITHUB_TOKEN }}

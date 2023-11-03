@@ -1,4 +1,4 @@
-async function assignToProject(github, context, columnId) {
+async function assignToProject({ github, context, columnId }) {
 	const issue_number = context.issue.number;
 	console.log('issue_number', issue_number);
 
