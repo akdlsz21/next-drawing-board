@@ -10,6 +10,18 @@ async function assignToProject(github, context, columnId) {
 
 	console.log('------------- TRY FOR PROJECT ---------------');
 	try {
+		// get column
+
+		const temp = await github.rest.projects.getCard({
+			card_id: 43533248,
+			baseUrl: 'https://api.github.com',
+			headers: {
+				authorization: `token ${process.env.GITHUB_TOKEN}`,
+			},
+		});
+
+		console.log('temp', temp);
+
 		// Get the issue to retrieve its ID
 		const issue = await github.rest.issues.get({
 			owner: context.repo.owner,
