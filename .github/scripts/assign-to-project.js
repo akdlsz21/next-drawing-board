@@ -15,20 +15,20 @@ async function assignToProject(github, context, { projectId, columnId }) {
 		const listColumnsRes = await listColumns(github, projectId);
 		console.log('listColumnsRes', listColumnsRes);
 
-		// Get the issue to retrieve its ID
-		const issue = await github.rest.issues.get({
-			owner: context.repo.owner,
-			repo: context.repo.repo,
-			issue_number: issue_number,
-		});
+		// // Get the issue to retrieve its ID
+		// const issue = await github.rest.issues.get({
+		// 	owner: context.repo.owner,
+		// 	repo: context.repo.repo,
+		// 	issue_number: issue_number,
+		// });
 
-		// Create a card for the issue in the project column
-		await github.rest.projects.createCard({
-			column_id: `${columnId}`,
-			content_id: issue.data.id,
-			content_type: 'Issue',
-			note: 'this is note for the card',
-		});
+		// // Create a card for the issue in the project column
+		// await github.rest.projects.createCard({
+		// 	column_id: `${columnId}`,
+		// 	content_id: issue.data.id,
+		// 	content_type: 'Issue',
+		// 	note: 'this is note for the card',
+		// });
 
 		console.log(`Issue ${issue_number} added to project column ${columnId}`);
 	} catch (error) {

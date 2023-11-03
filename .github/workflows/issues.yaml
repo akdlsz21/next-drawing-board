@@ -3,7 +3,10 @@ name: Issue Milestone Assigner
 #    issues: write
 #    contents: read
 #    repository-projects: write
-permissions: write-all
+permissions:
+   issues: write
+   contents: read
+   repository-projects: write
 
 on:
    issues:
