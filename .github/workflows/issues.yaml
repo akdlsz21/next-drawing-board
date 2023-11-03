@@ -29,5 +29,8 @@ jobs:
            with:
               script: |
                  const assignToProject = require('./.github/scripts/assign-to-project.js');
-                 await assignToProject(github, context, 63566722 );
+                 await assignToProject(github, context, {
+                     projectId: 1, 
+                     columnId: 63566722
+                 } );
               github-token: ${{ secrets.GITHUB_TOKEN }}

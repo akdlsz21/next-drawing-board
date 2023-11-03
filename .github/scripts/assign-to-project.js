@@ -3,7 +3,7 @@
  * @param {import('actions-toolkit').ToolkitContext} context
  * @param {string} columnId
  */
-async function assignToProject(github, context, columnId) {
+async function assignToProject(github, context, { projectId, columnId }) {
 	const issue_number = context.issue.number;
 	console.log('issue_number', issue_number);
 	console.log('columnId', columnId);
