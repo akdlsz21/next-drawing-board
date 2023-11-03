@@ -8,19 +8,12 @@ jobs:
    assign-milestone:
       runs-on: ubuntu-latest
       steps:
-         - name: GitHub Script
-           uses: actions/github-script@v6.4.1
+         - name: Checkout repository
+           uses: actions/checkout@v3
 
+         - name: Assign Milestone to Issue
+           uses: actions/github-script@v6
            with:
-              github-token: ${{secrets.GITHUB_TOKEN}}
               script: |
-                 const issue_number = context.issue.number;
-                 const milestone_number = 1; // Replace with your milestone number
-                 console.log(context);
-                 console.log(github.rest.issues);
-                 github.rest.issues.update({
-                   owner: context.repo.owner,
-                   repo: context.repo.repo,
-                   issue_number: issue_number,
-                   milestone: milestone_number
-                 });
+                 const assignMilestone = require('./.github/scripts/assign-milestone.js');
+                 await assignMilestone({ github, context });
