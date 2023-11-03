@@ -11,16 +11,9 @@ async function assignToProject(github, context, columnId) {
 	console.log('------------- TRY FOR PROJECT ---------------');
 	try {
 		// get column
-		console.log('get card!');
-		const temp = await github.rest.projects.getCard({
-			card_id: 43533248,
-			baseUrl: 'https://api.github.com',
-			headers: {
-				authorization: `token ${process.env.GITHUB_TOKEN}`,
-			},
-		});
-
-		console.log('temp', temp);
+		console.log('list columns');
+		const listColumnsRes = await listColumns(github, projectId);
+		console.log('listColumnsRes', listColumnsRes);
 
 		// Get the issue to retrieve its ID
 		const issue = await github.rest.issues.get({
@@ -43,6 +36,35 @@ async function assignToProject(github, context, columnId) {
 		throw error; // This will fail the workflow step
 	}
 }
+
+async function listColumns(github, projectId) {
+	try {
+		const columns = await github.rest.projects.listColumns({
+			project_id: projectId,
+		});
+
+		for (const column of columns.data) {
+			console.log(`Column ID: ${column.id}, Column name: ${column.name}`);
+		}
+	} catch (error) {
+		console.error(`Error listing columns: ${error}`);
+	}
+}
+async function listCards(github, columnId) {
+	try {
+		const cards = await github.rest.projects.listCards({
+			column_id: columnId,
+		});
+
+		for (const card of cards.data) {
+			console.log(`Card ID: ${card.id}, Card note: ${card.note}`);
+		}
+	} catch (error) {
+		console.error(`Error listing cards: ${error}`);
+	}
+}
+
+listCards(github, columnId);
 
 module.exports = assignToProject;
 // 63566722
