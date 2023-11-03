@@ -64,8 +64,6 @@ async function listCards(github, columnId) {
 	}
 }
 
-listCards(github, columnId);
-
 module.exports = assignToProject;
 // 63566722
 // 63566722
