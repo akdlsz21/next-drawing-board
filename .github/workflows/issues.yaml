@@ -1,4 +1,7 @@
 name: Issue Milestone Assigner
+permissions:
+   issues: write
+   contents: read
 
 on:
    issues:
@@ -17,3 +20,4 @@ jobs:
               script: |
                  const assignMilestone = require('./.github/scripts/assign-milestone.js');
                  await assignMilestone({ github, context });
+              github-token: ${{ secrets.GITHUB_TOKEN }}
