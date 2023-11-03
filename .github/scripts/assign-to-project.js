@@ -11,7 +11,7 @@ async function assignToProject(github, context, columnId) {
 	console.log('------------- TRY FOR PROJECT ---------------');
 	try {
 		// get column
-
+		console.log('get card!');
 		const temp = await github.rest.projects.getCard({
 			card_id: 43533248,
 			baseUrl: 'https://api.github.com',
