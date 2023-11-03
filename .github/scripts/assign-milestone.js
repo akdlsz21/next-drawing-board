@@ -1,6 +1,6 @@
 // This script should be placed in .github/scripts/assign-milestone.js
 
-export default async ({ github, context }) => {
+module.exports = async ({ github, context }) => {
 	const issue_number = context.issue.number;
 	const milestone_number = 1; // Replace with your milestone number
 
