@@ -1,9 +1,9 @@
 name: Issue Milestone Assigner
-permissions:
-   issues: write
-   contents: read
-   repository-projects: write
-
+# permissions:
+#    issues: write
+#    contents: read
+#    repository-projects: write
+permissions: write-all
 on:
    issues:
       types: [opened, edited]
