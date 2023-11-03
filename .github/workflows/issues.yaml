@@ -4,6 +4,7 @@ name: Issue Milestone Assigner
 #    contents: read
 #    repository-projects: write
 permissions: write-all
+
 on:
    issues:
       types: [opened, edited]
@@ -28,5 +29,5 @@ jobs:
            with:
               script: |
                  const assignToProject = require('./.github/scripts/assign-to-project.js');
-                 await assignToProject({ github, context, columnId: 1 });
+                 await assignToProject({ github, context, columnId: 63566722 });
               github-token: ${{ secrets.GITHUB_TOKEN }}
