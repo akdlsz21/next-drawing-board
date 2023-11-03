@@ -15,6 +15,7 @@ async function assignToProject({ github, context, columnId }) {
 			column_id: columnId,
 			content_id: issue.data.id,
 			content_type: 'Issue',
+			note: 'this is note for the card',
 		});
 
 		console.log(`Issue ${issue_number} added to project column ${columnId}`);
